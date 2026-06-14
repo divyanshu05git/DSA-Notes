@@ -6,7 +6,7 @@
   when there is a cycle , slow and fast will keep moving in the cycle and will meet at a pointer(detecting cycle)
 -if fast or slow becomes null , then no cycle 
 
-'''Java
+'''java
 public class Solution {
     public boolean hasCycle(ListNode head) {
         if(head==null) return false;
