@@ -291,17 +291,3 @@ Partial Overlap
     return merge(left,right)
 ```
 
----
-
-# Identity Elements
-
-| Operation | Identity |
-|------------|----------|
-| Sum | 0 |
-| Product | 1 |
-| Minimum | +∞ |
-| Maximum | -∞ |
-| XOR | 0 |
-| GCD | 0 |
-
----
