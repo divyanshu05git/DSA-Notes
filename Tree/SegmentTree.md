@@ -9,29 +9,14 @@ It is mainly used when:
 - Frequent updates are performed on the array.
 - Multiple range queries need to be answered efficiently.
 
----
-
-# Applications
-
-- Range Sum Query
-- Range Minimum Query (RMQ)
-- Range Maximum Query
-- GCD of a Range
-- XOR of a Range
-- Range Updates (with Lazy Propagation)
-
----
 
 # Structure
 
 For an array
-
 ```
 [2, 5, 1, 4]
 ```
-
 Segment Tree
-
 ```
                 12
               /    \
@@ -39,45 +24,11 @@ Segment Tree
            /  \    / \
           2    5  1   4
 ```
-
-Each node stores information about a segment.
-
-Example:
-
 ```
-Root -> [0...3]
-Left -> [0...1]
-Right -> [2...3]
-```
-
----
-
-# Array Representation
-
-Instead of building an actual tree, store it in an array.
-
-```
-Root = 0
-
+Root = i
 Left Child  = 2*i + 1
 Right Child = 2*i + 2
 ```
-
-Example
-
-```
-Index
-
-0
-├──1
-│  ├──3
-│  └──4
-└──2
-   ├──5
-   └──6
-```
-
----
 
 # Tree Size
 
@@ -86,9 +37,7 @@ Allocate
 ```java
 int segTree[] = new int[4 * n];
 ```
-
 `4*n` is sufficient for all cases.
-
 ---
 
 # Build Tree
@@ -184,46 +133,15 @@ There are three cases.
 
 ## 1. No Overlap
 
-```
-Current Segment
-
-|------|
-
-Query
-
-              |------|
-```
-
 Return
 
-```
-Identity Element
-```
-
-For
-
-- Sum → 0
-- Min → +∞
-- Max → -∞
-- GCD → 0
 
 ```java
 return 0;
 ```
 
----
-
 ## 2. Complete Overlap
 
-```
-Current Segment
-
-|--------------|
-
-Query
-
-   |------|
-```
 
 Return stored value.
 
@@ -231,11 +149,9 @@ Return stored value.
 return segTree[node];
 ```
 
----
-
 ## 3. Partial Overlap
 
-Split into both children.
+Split into two children.
 
 ```java
 leftAnswer
@@ -296,11 +212,7 @@ O(2n)=O(n)
 
 # Why Query is O(log n)?
 
-At every level,
-
-- only a constant number of nodes are explored.
-- height of tree is `log n`.
-
+- max exploration is height of tree is `log n`.
 Therefore
 
 ```
@@ -325,17 +237,6 @@ with
 tree[node]=merge(left,right);
 ```
 
-Examples
-
-| Query | Merge |
-|--------|--------|
-| Sum | + |
-| Min | Math.min |
-| Max | Math.max |
-| GCD | gcd |
-| XOR | ^ |
-
----
 
 # Segment Tree Template
 
@@ -404,7 +305,3 @@ Partial Overlap
 | GCD | 0 |
 
 ---
-
-
-
-
