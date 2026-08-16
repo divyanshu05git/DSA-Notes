@@ -1,4 +1,6 @@
-` ` `class Solution {
+` ` ` java
+
+class Solution {
     boolean vis[];
     Map<Integer,List<Integer>> g;
     public boolean isCycle(int V, int[][] edges) {
