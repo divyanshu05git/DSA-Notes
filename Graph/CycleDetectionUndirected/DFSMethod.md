@@ -1,4 +1,4 @@
-java ` ` `
+``` java
 
 class Solution {
     boolean vis[];
@@ -43,4 +43,4 @@ class Solution {
         return false;
     }
 }
-` ` `
+```
