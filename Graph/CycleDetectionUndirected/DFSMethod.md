@@ -4,7 +4,7 @@ class Solution {
     boolean vis[];
     Map<Integer,List<Integer>> g;
     public boolean isCycle(int V, int[][] edges) {
-        // Code here
+        
         vis=new boolean[V];
         g=new HashMap<>();
         for(int i=0;i<V;i++){
@@ -36,7 +36,7 @@ class Solution {
                 if(dfs(e,node)) return true;
             }
             else{
-                if(e!=par) return true;
+                if(e!=par) return true; //if other than parent is marked visited meaning this node has been visited earlier also hence cycle
             }
         }
         
