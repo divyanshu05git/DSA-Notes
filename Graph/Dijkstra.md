@@ -1,4 +1,6 @@
-Dijkstra algo is used to find shortest path for both directed and undirected weighted graph.
+Dijkstra algo is used to find shortest path for both directed and undirected weighted graph from single source to all.
+weights should not be negative
+
 
 1->Weighted Undirected
 ```java
