@@ -1,14 +1,13 @@
 ```java
 class Solution {
     Map<Integer,List<Integer>> g;
-    int indegree[];
     ArrayList<Integer> ls;
     boolean vis[];
+    Stack<Integer> st;
     public ArrayList<Integer> topoSort(int V, int[][] edges) {
         // code here
         ls=new ArrayList<>();
         
-        indegree=new int[V];
         g=new HashMap<>();
         vis=new boolean[V];
         
@@ -20,31 +19,32 @@ class Solution {
             int u=a[0];
             int v=a[1];
             
-            
             g.get(u).add(v);
-            
-            indegree[v]++;
 
         }
+        st=new Stack<>();
         
         for(int i=0;i<V;i++){
             if(vis[i]) continue;
-            if(indegree[i]==0) dfs(i);
+            dfs(i);
         }
+        
+        while(!st.isEmpty()) ls.add(st.pop());
         
         
         return ls;
     }
     public void dfs(int node){
-        ls.add(node);
         vis[node]=true;
         
         for(int e:g.get(node)){
             if(vis[e]) continue;
             
-            indegree[e]--;
-            if(indegree[e]==0) dfs(e);
+
+            dfs(e);
         }
+        
+        st.push(node);
     }
 }
 ```
