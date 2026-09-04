@@ -1,16 +1,11 @@
 ```java
 class Solution {
-    Map<Integer,List<Integer>> g;
-    int indegree[];
-    ArrayList<Integer> ls;
-    boolean vis[];
     public ArrayList<Integer> topoSort(int V, int[][] edges) {
         // code here
-        ls=new ArrayList<>();
+        ArrayList<Integer> ls=new ArrayList<>();
         
-        indegree=new int[V];
-        g=new HashMap<>();
-        vis=new boolean[V];
+        int indegree[]=new int[V];
+        Map<Integer,List<Integer>> g=new HashMap<>();
         
         for(int i=0;i<V;i++){
             g.put(i,new ArrayList<>());
@@ -20,31 +15,29 @@ class Solution {
             int u=a[0];
             int v=a[1];
             
-            
             g.get(u).add(v);
-            
             indegree[v]++;
 
         }
         
+        
+        Queue<Integer> q=new LinkedList<>();
         for(int i=0;i<V;i++){
-            if(vis[i]) continue;
-            if(indegree[i]==0) dfs(i);
+            if(indegree[i]==0) q.add(i);
         }
         
+        while(!q.isEmpty()){
+            int node=q.poll();
+            ls.add(node);
+            
+            for(int e:g.get(node)){
+                indegree[e]--;
+                if(indegree[e]==0) q.add(e);
+            }
+            
+        }
         
         return ls;
-    }
-    public void dfs(int node){
-        ls.add(node);
-        vis[node]=true;
-        
-        for(int e:g.get(node)){
-            if(vis[e]) continue;
-            
-            indegree[e]--;
-            if(indegree[e]==0) dfs(e);
-        }
     }
 }
 ```
