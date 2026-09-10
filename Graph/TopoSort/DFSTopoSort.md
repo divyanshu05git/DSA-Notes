@@ -1,3 +1,9 @@
+Build graph       O(V)
+Process edges     O(E)
+Find indegree 0   O(V)
+Kahn's BFS        O(V + E)
+--------------------------------
+Total             O(V + E)
 ```java
 class Solution {
     Map<Integer,List<Integer>> g;
